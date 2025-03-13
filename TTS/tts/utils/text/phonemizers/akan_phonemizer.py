@@ -1,12 +1,13 @@
 import logging
 
 from TTS.tts.utils.text.akan.phonemizer import aka_text_to_phonemes
+from TTS.tts.utils.text.phonemizers.base import BasePhonemizer
 
 logger = logging.getLogger(__name__)
 
 _DEF_AKA_PUNCS = "!'(),-.:;?’ ",
 
-class AKA_Phonemizer:
+class AKA_Phonemizer(BasePhonemizer):
     """🐸TTS bn phonemizer using functions in `TTS.tts.utils.text.bangla.phonemizer`
 
     Args:

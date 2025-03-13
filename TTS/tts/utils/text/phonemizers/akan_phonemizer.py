@@ -5,7 +5,7 @@ from TTS.tts.utils.text.phonemizers.base import BasePhonemizer
 
 logger = logging.getLogger(__name__)
 
-_DEF_AKA_PUNCS = "!'(),-.:;?’ ",
+_DEF_AKA_PUNCS = "!'(),-.:;?’"
 
 class AKA_Phonemizer(BasePhonemizer):
     """🐸TTS bn phonemizer using functions in `TTS.tts.utils.text.bangla.phonemizer`
@@ -27,6 +27,7 @@ class AKA_Phonemizer(BasePhonemizer):
     language = "aka"
 
     def __init__(self, punctuations=_DEF_AKA_PUNCS, keep_puncs=False, **kwargs):  # pylint: disable=unused-argument
+        print(punctuations)
         super().__init__(self.language, punctuations=punctuations, keep_puncs=keep_puncs)
 
     @staticmethod

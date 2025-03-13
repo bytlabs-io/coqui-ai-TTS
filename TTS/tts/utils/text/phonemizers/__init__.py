@@ -23,6 +23,11 @@ try:
 except ImportError:
     ZH_CN_Phonemizer = None
 
+try:
+    from TTS.tts.utils.text.phonemizers.akan_phonemizer import AKA_Phonemizer
+except ImportError:
+    AKA_Phonemizer = None
+
 PHONEMIZERS = {b.name(): b for b in (ESpeak, Gruut)}
 
 
@@ -59,6 +64,9 @@ if KO_KR_Phonemizer is not None:
 if ZH_CN_Phonemizer is not None:
     PHONEMIZERS[ZH_CN_Phonemizer.name()] = ZH_CN_Phonemizer
     DEF_LANG_TO_PHONEMIZER["zh-cn"] = ZH_CN_Phonemizer.name()
+if AKA_Phonemizer is not None:
+    PHONEMIZERS[AKA_Phonemizer.name()] = AKA_Phonemizer
+    DEF_LANG_TO_PHONEMIZER["aka"] = AKA_Phonemizer.name()
 
 
 def get_phonemizer_by_name(name: str, **kwargs) -> BasePhonemizer:
@@ -91,6 +99,10 @@ def get_phonemizer_by_name(name: str, **kwargs) -> BasePhonemizer:
         if BN_Phonemizer is None:
             raise ValueError("You need to install BN phonemizer dependencies. Try `pip install coqui-tts[bn]`.")
         return BN_Phonemizer(**kwargs)
+    if name == "aka_phonemizer":
+        if AKA_Phonemizer is None:
+            raise ValueError("You need to install AKA phonemizer dependencies. Try `pip install coqui-tts[aka]`.")
+        return AKA_Phonemizer(**kwargs)
     if name == "be_phonemizer":
         return BEL_Phonemizer(**kwargs)
     raise ValueError(f"Phonemizer {name} not found")

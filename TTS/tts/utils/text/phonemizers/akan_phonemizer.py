@@ -27,7 +27,6 @@ class AKA_Phonemizer(BasePhonemizer):
     language = "aka"
 
     def __init__(self, punctuations=_DEF_AKA_PUNCS, keep_puncs=False, **kwargs):  # pylint: disable=unused-argument
-        print(punctuations)
         super().__init__(self.language, punctuations=punctuations, keep_puncs=keep_puncs)
 
     @staticmethod

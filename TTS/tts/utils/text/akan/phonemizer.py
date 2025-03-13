@@ -18,11 +18,6 @@ def _transformer_phonemize(text: str):
     return phones
 
 
-def collapse_whitespace(text):
-    # Regular expression matching whitespace:
-    _whitespace_re = re.compile(r"\s+")
-    return re.sub(_whitespace_re, " ", text)
-
 
 def aka_text_to_phonemes(text: str) -> str:
     # english numbers to akan conversion
@@ -37,7 +32,6 @@ def aka_text_to_phonemes(text: str) -> str:
     aka_text = text.strip()
 
     aka_text = _transformer_phonemize(aka_text)
-    aka_text = collapse_whitespace(aka_text)
 
     return aka_text
 

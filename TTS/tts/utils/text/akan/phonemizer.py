@@ -1,6 +1,8 @@
 import re
 from transformers import T5ForConditionalGeneration, AutoTokenizer
 
+from TTS.tts.utils.text.phonemizers.akan_phonemizer import _DEF_AKA_PUNCS
+
 from .number_norm import normalize_numbers
 
 # initialize
@@ -20,8 +22,16 @@ def _transformer_phonemize(text: str):
 
 
 def aka_text_to_phonemes(text: str) -> str:
-    aka_text = _transformer_phonemize(text)
-
-    return aka_text
+    sentenceEnders = re.compile(_DEF_AKA_PUNCS)
+    sentences = sentenceEnders.split(str(text))
+    ph = ""
+    for sentence in sentences:
+        words = sentence.split(" ")
+        for word in words:
+            aka_text = _transformer_phonemize(word)
+            aka_text+=" "
+            ph+=aka_text
+    print("phone sentence: "+ph)
+    return ph
 
 

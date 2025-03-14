@@ -20,7 +20,6 @@ def _transformer_phonemize(text: str):
 
 
 def aka_text_to_phonemes(text: str) -> str:
-    print("aka_text_to_phonemes input text: "+text)
     # english numbers to akan conversion
     res = re.search("[0-9]", text)
     if res is not None:
@@ -33,7 +32,6 @@ def aka_text_to_phonemes(text: str) -> str:
     aka_text = text.strip()
 
     aka_text = _transformer_phonemize(aka_text)
-    print("aka_text_to_phonemes output text: "+aka_text)
 
     return aka_text
 

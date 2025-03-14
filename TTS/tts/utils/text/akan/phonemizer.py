@@ -20,17 +20,6 @@ def _transformer_phonemize(text: str):
 
 
 def aka_text_to_phonemes(text: str) -> str:
-    # english numbers to akan conversion
-    res = re.search("[0-9]", text)
-    if res is not None:
-        text = normalize_numbers(text)
-
-    # create tuple of (lang,text)
-    if "" in text:
-        text = text.replace("", "").replace("", "")
-    # Split based on sentence ending Characters
-    aka_text = text.strip()
-
     aka_text = _transformer_phonemize(aka_text)
 
     return aka_text

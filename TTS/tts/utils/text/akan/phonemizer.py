@@ -21,6 +21,6 @@ def _transformer_phonemize(text: str):
 
 
 def aka_text_to_phonemes(text: str) -> str:
-    return _transformer_phonemize(text)
+    return _transformer_phonemize(text)[0]
 
 

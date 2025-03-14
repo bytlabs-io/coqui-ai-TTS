@@ -1,11 +1,13 @@
 import re
 from transformers import T5ForConditionalGeneration, AutoTokenizer
 
-from TTS.tts.utils.text.phonemizers.akan_phonemizer import _DEF_AKA_PUNCS
 
 from .number_norm import normalize_numbers
 
 # initialize
+
+_DEF_AKA_PUNCS = "!'(),-.:;?’"
+
 
 def _transformer_phonemize(text: str):
     model = T5ForConditionalGeneration.from_pretrained('fiifinketia/akan-g2p')

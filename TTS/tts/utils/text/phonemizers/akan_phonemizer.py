@@ -46,8 +46,8 @@ class AKA_Phonemizer(BasePhonemizer):
                 ph_sentence+=f"{ph} "
         # split ph_sentence by space and add
         print("ph_sentence: "+ph_sentence )
-        ph_chars = list(ph_sentence)
-        ph = f"{separator}".join(ph_chars)
+        print(separator)
+        ph = "|".join(list(ph_sentence))
         print("final phone: "+ph)
 
         return ph

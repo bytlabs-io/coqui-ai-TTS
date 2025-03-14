@@ -26,7 +26,6 @@ except ImportError:
 try:
     from TTS.tts.utils.text.phonemizers.akan_phonemizer import AKA_Phonemizer
 except ImportError:
-    print("Unable to import")
     AKA_Phonemizer = None
 
 PHONEMIZERS = {b.name(): b for b in (ESpeak, Gruut)}

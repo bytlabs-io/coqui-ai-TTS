@@ -22,7 +22,7 @@ def _transformer_phonemize(text: str):
 
 
 def aka_text_to_phonemes(text: str) -> str:
-    sentenceEnders = re.compile(_DEF_AKA_PUNCS)
+    sentenceEnders = re.compile("!'(),-.:;?’")
     sentences = sentenceEnders.split(str(text))
     ph = ""
     for sentence in sentences:

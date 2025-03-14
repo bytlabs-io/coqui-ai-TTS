@@ -45,11 +45,7 @@ class AKA_Phonemizer(BasePhonemizer):
                 ph = aka_text_to_phonemes(word)
                 ph_sentence+=f"{ph} "
         # split ph_sentence by space and add
-        print("ph_sentence: "+ph_sentence )
-        print(separator)
-        ph = "|".join(list(ph_sentence))
-        print("final phone: "+ph)
-
+        ph = f"{separator}".join(list(ph_sentence))
         return ph
 
     def _phonemize(self, text, separator):

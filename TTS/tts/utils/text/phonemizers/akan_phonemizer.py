@@ -1,4 +1,5 @@
 import logging
+import re
 
 from TTS.tts.utils.text.akan.phonemizer import aka_text_to_phonemes
 from TTS.tts.utils.text.phonemizers.base import BasePhonemizer
@@ -35,7 +36,33 @@ class AKA_Phonemizer(BasePhonemizer):
 
     @staticmethod
     def phonemize_aka(text: str, separator: str = "|") -> str:  # pylint: disable=unused-argument
+        print("Input text: " +text)
+
+        # ph_list = []
+        # sentenceEnders = re.compile(_DEF_AKA_PUNCS)
+        # sentences = sentenceEnders.split(str(text))
+
+        # data = ""
+        # for sent in sentences:
+
+        #             for word_phoneme in word.phonemes:
+        #                 if not self.keep_stress:
+        #                     # Remove primary/secondary stress
+        #                     word_phoneme = IPA.without_stress(word_phoneme)
+
+        #                 word_phoneme = word_phoneme.translate(GRUUT_TRANS_TABLE)
+
+        #                 if word_phoneme:
+        #                     # Flatten phonemes
+        #                     word_phonemes.extend(word_phoneme)
+
+        #             if word_phonemes:
+        #                 ph_list.append(word_phonemes)
+
+        # ph_words = [separator.join(word_phonemes) for word_phonemes in ph_list]
         ph = aka_text_to_phonemes(text)
+
+        print("Output Text: "+ph)
         return ph
 
     def _phonemize(self, text, separator):

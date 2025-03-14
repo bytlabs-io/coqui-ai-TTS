@@ -20,7 +20,7 @@ def _transformer_phonemize(text: str):
 
 
 def aka_text_to_phonemes(text: str) -> str:
-    aka_text = _transformer_phonemize(aka_text)
+    aka_text = _transformer_phonemize(text)
 
     return aka_text
 

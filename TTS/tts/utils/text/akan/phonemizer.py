@@ -6,9 +6,6 @@ from .number_norm import normalize_numbers
 
 # initialize
 
-_DEF_AKA_PUNCS = "!'(),-.:;?’"
-
-
 def _transformer_phonemize(text: str):
     model = T5ForConditionalGeneration.from_pretrained('fiifinketia/akan-g2p')
     tokenizer = AutoTokenizer.from_pretrained('fiifinketia/akan-g2p')
@@ -24,16 +21,6 @@ def _transformer_phonemize(text: str):
 
 
 def aka_text_to_phonemes(text: str) -> str:
-    sentenceEnders = re.compile("!'(),-.:;?’")
-    sentences = sentenceEnders.split(str(text))
-    ph = ""
-    for sentence in sentences:
-        words = sentence.split(" ")
-        for word in words:
-            aka_text = _transformer_phonemize(word)
-            aka_text+=" "
-            ph+=aka_text
-    print("phone sentence: "+ph)
-    return ph
+    return _transformer_phonemize(text)
 
 

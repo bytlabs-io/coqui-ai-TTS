@@ -1,11 +1,12 @@
 import logging
 import re
 
-from TTS.tts.utils.text.akan.phonemizer import aka_text_to_phonemes, _DEF_AKA_PUNCS
+from TTS.tts.utils.text.akan.phonemizer import aka_text_to_phonemes
 from TTS.tts.utils.text.phonemizers.base import BasePhonemizer
 
 logger = logging.getLogger(__name__)
 
+_DEF_AKA_PUNCS = "!'(),-.:;?’"
 
 class AKA_Phonemizer(BasePhonemizer):
     """🐸TTS bn phonemizer using functions in `TTS.tts.utils.text.bangla.phonemizer`
@@ -35,11 +36,19 @@ class AKA_Phonemizer(BasePhonemizer):
 
     @staticmethod
     def phonemize_aka(text: str, separator: str = "|") -> str:  # pylint: disable=unused-argument
-        ph_list = aka_text_to_phonemes(text)
-        print("ph_list: ")
-        print(ph_list)
-        ph_words = [separator.join(word_phonemes) for word_phonemes in ph_list]
-        ph = f"{separator} ".join(ph_words)
+        sentenceEnders = re.compile(_DEF_AKA_PUNCS)
+        sentences = sentenceEnders.split(str(text))
+        ph_sentence = ""
+        for sentence in sentences:
+            words = sentence.split(" ")
+            for word in words:
+                ph = aka_text_to_phonemes(word)
+                print("_transformer_phonemize(word) ph: ")
+                print(ph)
+                ph_sentence+=f"{ph} "
+        # split ph_sentence by space and add
+        ph_chars = ph_sentence.split("")
+        ph = f"{separator} ".join(ph_chars)
 
         return ph
 

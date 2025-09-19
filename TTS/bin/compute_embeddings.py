@@ -111,6 +111,7 @@ def compute_embeddings(
     meta_file_val=None,
     disable_cuda=False,
     no_eval=False,
+    formatter=None,
 ):
     use_cuda = torch.cuda.is_available() and not disable_cuda
 
@@ -126,7 +127,7 @@ def compute_embeddings(
             c_dataset.meta_file_train = meta_file_train
         if meta_file_val is not None:
             c_dataset.meta_file_val = meta_file_val
-        meta_data_train, meta_data_eval = load_tts_samples(c_dataset, eval_split=not no_eval)
+        meta_data_train, meta_data_eval = load_tts_samples(c_dataset, eval_split=not no_eval, formatter=formatter)
 
     if meta_data_eval is None:
         samples = meta_data_train
